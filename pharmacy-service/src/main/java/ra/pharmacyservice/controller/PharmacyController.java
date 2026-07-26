@@ -29,4 +29,14 @@ public class PharmacyController {
                 LocalDateTime.now()
         ), HttpStatus.OK);
     }
+    @GetMapping("/pharmacies/stock/{id}")
+    public ResponseEntity<ApiResponse<?>> getPharmaciesStockById(@PathVariable Long id) {
+        return new ResponseEntity<>(new ApiResponse<>(
+                true,
+                "Kiểm tra tồn kho thành công!",
+                pharmacyService.checkWarehouseStock(id),
+                null,
+                LocalDateTime.now()
+        ), HttpStatus.OK);
+    }
 }
